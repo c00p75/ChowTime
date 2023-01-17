@@ -233,7 +233,8 @@ form #submit {
 
 .scroll-right {
   align-self: flex-end;
-  margin-right: -6vw;
+  margin-right: -6vw !important;
+  -webkit-margin-right: -6vw !important;
 }
 
 .scroll-left {
@@ -252,6 +253,7 @@ form #submit {
   overflow-y: hidden;
   scroll-behavior: smooth;
   gap: 1vw;
+  -webkit-gap: 1vw;
   padding-bottom: 0.2em;
 }
 
@@ -268,10 +270,6 @@ form #submit {
   border-radius: 10px;
 }
 
-.category > div:nth-child(3n) {
-  margin-right: 0.5vw !important;
-}
-
 .category > div:last-child {
   margin-right: 0.5vw !important;
 }
@@ -282,6 +280,8 @@ form #submit {
   justify-content: space-between;
   background-color: white;
   width: 18vw;
+  box-shadow: 0 0 3px black;
+  -webkit-box-shadow: 0 0 3px black;
 }
 
 .meal-item-container > button {

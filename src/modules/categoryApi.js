@@ -2,7 +2,7 @@ import { categoryCounter } from './itemsCounter.js';
 import { retrieveData } from './getApiData.js';
 
 let totalMealCount = 0;
-
+const screenWidth = window.matchMedia('(max-width: 768)');
 // Get meal categories
 export default async () => {
   fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
@@ -22,9 +22,17 @@ export default async () => {
         categoryHeader.innerHTML += ` (${mealCount})`;
         totalMealCount += mealCount;
         document.querySelector('#total-items').innerHTML = `Meals (${totalMealCount})`;
-        if (mealCount < 5) {
-          document.getElementById(category.id).querySelector('.scroll-left').style.display = 'none';
-          document.getElementById(category.id).querySelector('.scroll-right').style.display = 'none';
+        if (screenWidth.matches) {
+          if (mealCount < 4) {
+            document.getElementById(category.id).querySelector('.scroll-left').style.display = 'none';
+            document.getElementById(category.id).querySelector('.scroll-right').style.display = 'none';
+          }
+        }
+        if (!screenWidth.matches) {
+          if (mealCount < 4) {
+            document.getElementById(category.id).querySelector('.scroll-left').style.display = 'none';
+            document.getElementById(category.id).querySelector('.scroll-right').style.display = 'none';
+          }
         }
       });
     });

@@ -4,10 +4,4 @@ export const categoryCounter = () => {
   return count;
 };
 
-export const itemCounter = () => {
-  let count = 0;
-  document.querySelector('#meal-container').childNodes.forEach((i) => {
-    i.childNodes.forEach(() => { count += 1; });
-  });
-  return count;
-};
+export default categoryCounter;
