@@ -9,5 +9,5 @@ export const itemCounter = () => {
   document.querySelector('#meal-container').childNodes.forEach((i) => {
     i.childNodes.forEach(() => { count += 1; });
   });
-  console.log(count);
+  return count;
 };

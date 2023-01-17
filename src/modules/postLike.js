@@ -1,6 +1,7 @@
 import { apiID } from './getApiData.js';
 
 export default async (item) => {
+  document.getElementById(`${item}`).querySelector('.likes-count').innerHTML = +document.getElementById(`${item}`).querySelector('.likes-count').innerHTML + 1;
   await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiID}/likes`, {
     method: 'POST',
     headers: {
@@ -9,8 +10,5 @@ export default async (item) => {
     body: JSON.stringify({
       item_id: `${item}`,
     }),
-  })
-    .then(() => {
-      document.getElementById(`${item}`).querySelector('.likes-count').innerHTML = +document.getElementById(`${item}`).querySelector('.likes-count').innerHTML + 1;
-    });
+  });
 };

@@ -9,7 +9,7 @@ export default async () => {
     .then((response) => response.json())
     .then((json) => {
       json.meals.forEach((cat) => {
-        document.querySelector('#meal-container').innerHTML += `<div id='${cat.strCategory}' class='category-container'><h2>${cat.strCategory}</h2> <div class = 'category'></div> <button class='scroll-right'>❯</button> <button class='scroll-left'>❮</button> </div>`;
+        document.querySelector('#meal-container').innerHTML += `<div id='${cat.strCategory}' class='category-container'><h2><span class="category-dropdown">❯</span> ${cat.strCategory}</h2> <div class = 'category'></div> <button class='scroll-right'>❯</button> <button class='scroll-left hide'>❮</button> </div>`;
       });
     })
     .then(() => {
@@ -22,6 +22,10 @@ export default async () => {
         categoryHeader.innerHTML += ` (${mealCount})`;
         totalMealCount += mealCount;
         document.querySelector('#total-items').innerHTML = `Meals (${totalMealCount})`;
+        if (mealCount < 5) {
+          document.getElementById(category.id).querySelector('.scroll-left').style.display = 'none';
+          document.getElementById(category.id).querySelector('.scroll-right').style.display = 'none';
+        }
       });
     });
 };
