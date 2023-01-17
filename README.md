@@ -24,7 +24,7 @@ After you're finished please remove all the comments and instructions!
 
 <div align="center">
 
-  <img src="./src/modules/../murple_logo%20(1).png" alt="logo" width="140"  height="auto" />
+  <img src="./src/assets/logo.png" alt="logo" width="140"  height="auto" />
   <br/>
 
   <h3><b>Chow Time</b></h3>
@@ -57,7 +57,7 @@ After you're finished please remove all the comments and instructions!
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Movie Site <a name="about-project"></a>
+# 📖 Chow Time <a name="about-project"></a>
 
 **ChowTime** is a demo project that illustrates the consumption of APIs. The app list out the meals that one can view, comment on, and like. 
 
@@ -79,7 +79,7 @@ After you're finished please remove all the comments and instructions!
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://www.tvmaze.com/api">TV MAZE</a></li>
+    <li><a href="https://www.themealdb.com/api.php">The MealDB</a></li>
   </ul>
 </details>
 
@@ -94,9 +94,10 @@ After you're finished please remove all the comments and instructions!
 
 ### Key Features <a name="key-features"></a>
 
-- **Load Movies**
-- **View Movie Details**
+- **Load Categories and meals**
+- **View Meal Details**
 - **Leave Comments**
+- **Add Like**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -104,17 +105,11 @@ After you're finished please remove all the comments and instructions!
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://uchexm.github.io/JavaScript-Capstone-Project/dist/)
+- [Live Demo Link](https://c00p75.github.io/Chow-Time/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Video Link -->
-
-## 🎞 Video Link <a name="video-link"></a>
-
-- [Presentation Video Link](https://drive.google.com/file/d/1F_ZU0yVvl1iwZLIJKo1uUHLZAb7A_DJa/view?usp=share_link)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
@@ -133,7 +128,7 @@ To get a local copy up and running, follow these steps.
 Clone this repository to your desired folder:
 
 - `cd my-folder`
-- `git clone git@github.com:uchexm/JavaScript-Capstone-Project.git`
+- `git clone git@github.com:c00p75/Chow-Time.git`
 
 ### Install
 
@@ -174,7 +169,6 @@ To run the project, execute the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Play Videos**
 - [ ] **Reply to comments**
 - [ ] **Download Videos**
 
