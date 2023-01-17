@@ -27,7 +27,7 @@ After you're finished please remove all the comments and instructions!
   <img src="./src/modules/../murple_logo%20(1).png" alt="logo" width="140"  height="auto" />
   <br/>
 
-  <h3><b>Movie Site</b></h3>
+  <h3><b>Chow Time</b></h3>
 
 </div>
 
