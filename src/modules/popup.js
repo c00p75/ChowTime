@@ -31,30 +31,32 @@ export const details = async (id) => {
       // Declaring Variables to be used
       if (json.meals[0].strYoutube) {
         document.getElementById('modal-img-container').innerHTML = `
+        <h1>${json.meals[0].strMeal}</h1>
         <iframe src="${json.meals[0].strYoutube.replace('watch?v=', 'embed/')}" frameborder="0" allowfullscreen></iframe>
         `;
       }
-      const name = `<h1>${json.meals[0].strMeal}</h1>`;
-      const origin = `<span>Origin Location: </span> <span>${json.meals[0].strArea}</span>`;
-      const category = `<span>Category: </span> <span>${json.meals[0].strCategory}</span>`;
       const ingredientsArr = [];
       const allIngredients = Object.keys(json.meals[0]).filter((key) => key.includes('strIngredient'));
       allIngredients.forEach((ing) => {
         if (json.meals[0][ing]) { ingredientsArr.push(json.meals[0][ing]); }
       });
-      const ingredients = `<div class='ingredients'><span>Ingredients: </span> <span>${ingredientsArr.join(', ')}.</span></div>`;
-      const instructions = `<center><details><summary><span class="dropdown">❯</span> Instructions</summary> <div>${json.meals[0].strInstructions}</div>  </details></center>`;
+      const ingredients = `<div class='ingredients'><span class="detail-heading">Ingredients: </span> <span class="detail-description">${ingredientsArr.join(', ')}.</span></div>`;
+      const otherDetails = `
+        <div class="other-details">
+          <span class="detail-heading">Origin Location: </span> <span class="detail-description">${json.meals[0].strArea}</span>
+          <span class="detail-heading">Category: </span> <span class="detail-description">${json.meals[0].strCategory}</span>
+        </div>
+      `;
+      const instructions = `<details><summary><span class="dropdown">❯</span> Instructions</summary> <div>${json.meals[0].strInstructions}</div>  </details>`;
 
       // Adding variables to DOM
       const mealDetails = document.querySelector('#meal-details');
       mealDetails.innerHTML = '';
       mealDetails.className = id;
-      mealDetails.innerHTML += name;
       const subDetails = document.createElement('div');
       subDetails.className = 'sub-details';
-      subDetails.innerHTML += origin;
-      subDetails.innerHTML += category;
       subDetails.innerHTML += ingredients;
+      subDetails.innerHTML += otherDetails;
       mealDetails.appendChild(subDetails);
       mealDetails.innerHTML += instructions;
     });

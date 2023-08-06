@@ -29,7 +29,7 @@ export default async () => {
           }
         }
         if (!screenWidth.matches) {
-          if (mealCount < 4) {
+          if (mealCount < 5) {
             document.getElementById(category.id).querySelector('.scroll-left').style.display = 'none';
             document.getElementById(category.id).querySelector('.scroll-right').style.display = 'none';
           }

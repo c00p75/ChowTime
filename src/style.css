@@ -11,7 +11,6 @@ body {
   align-items: center;
   flex-direction: column;
   font-family: 'Poppins', sans-serif;
-  background-color: rgb(32, 32, 32);
 }
 
 header {
@@ -37,8 +36,12 @@ nav a {
 }
 
 footer {
+  background-color: rgb(32, 32, 32);
   color: white;
   font-size: 0.7em;
+  width: 100%;
+  padding: 0.3em;
+  text-align: center;
 }
 
 .glow {
@@ -89,7 +92,7 @@ h2 {
 form > * {
   width: 50vw;
   border-radius: 8px;
-  padding: 4% 9% 4% 4.5%;
+  padding: 1em;
   border: 0;
 }
 
@@ -98,19 +101,17 @@ form #submit {
   padding: 2%;
   cursor: pointer;
   justify-self: center;
-  background-color: cornflowerblue;
-  font-weight: bold;
+  background-color: yellowgreen;
 }
 
 .modal {
-  z-index: 10;
+  z-index: 20;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
-  padding: 2rem;
-  border-radius: 5px;
+  padding: 1em 0;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   max-height: 90vh;
   overflow: auto;
@@ -192,6 +193,8 @@ form #submit {
   align-items: center;
   background-image: url('assets/annie-spratt-6a3nqQ1YwBw-unsplash.jpg');
   background-size: contain;
+  width: 100%;
+  min-height: 50vh;
 }
 
 #meal-container > * {
@@ -260,6 +263,7 @@ form #submit {
 .category::-webkit-scrollbar,
 .modal::-webkit-scrollbar {
   height: 9px;
+  width: 5px;
   background-color: rgb(194, 191, 191, 0.5);
   border-bottom-right-radius: 5px;
 }
@@ -291,6 +295,11 @@ form #submit {
 .img-container {
   display: flex;
   cursor: pointer;
+  position: relative;
+}
+
+.img-container > img {
+  z-index: 1;
 }
 
 .count {
@@ -454,10 +463,16 @@ form #submit {
 #modal-img-container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 #modal-img {
-  width: 40vw;
+  height: 80vh;
+}
+
+#modal-data-container {
+  padding: 0 1em;
 }
 
 #comment-section {
@@ -468,15 +483,35 @@ form #submit {
 }
 
 .sub-details {
-  display: grid;
-  grid-template-columns: 25% auto;
-  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sub-details span {
+  margin-top: 0.5em;
+}
+
+.sub-details .detail-heading {
+  font-weight: bold;
+  padding-left: 0.5em;
+}
+
+.sub-details .detail-description {
+  padding: 0 0.5em;
 }
 
 .ingredients {
   display: flex;
   flex-direction: column;
-  grid-area: auto / 1 / span 3/ span 2;
+  margin-bottom: 0.5em;
+}
+
+.other-details {
+  font-size: 1em;
+}
+
+.popup-comments-title {
+  font-size: 1.3em;
 }
 
 .overlay {
@@ -485,7 +520,7 @@ form #submit {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(3px);
   z-index: 5;
 }
@@ -516,9 +551,14 @@ form #submit {
   gap: 1em;
 }
 
+#meal-details details {
+  align-self: flex-start;
+}
+
 iframe {
-  width: 60vw;
-  height: 59vh;
+  width: 100%;
+  height: 70vh;
+  margin: 1em 0;
 }
 
 .category-dropdown {
@@ -536,6 +576,71 @@ iframe {
   border-radius: 10px;
 }
 
+.loaderContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  min-height: 12.5em;
+}
+
+.loader {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60%;
+  height: 60%;
+  transform: rotate(45deg) translate(30%, 40%);
+  background: goldenrod;
+  box-shadow: 32px -34px 0 5px darkgoldenrod;
+  animation: slide 2s infinite ease-in-out alternate;
+}
+
+.loader::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 15%;
+  height: 15%;
+  border-radius: 50%;
+  background: gold;
+  transform: rotate(0deg);
+  transform-origin: 35px 145px;
+  animation: rotate 2s infinite ease-in-out;
+  box-shadow: 0 0 5px 5px yellow;
+}
+
+@keyframes slide {
+  0%,
+  100% { bottom: -35px; }
+
+  25%,
+  75% { bottom: -2px; }
+
+  20%,
+  80% { bottom: 2px; }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(-15deg); }
+
+  25%,
+  75% { transform: rotate(0deg); }
+
+  100% { transform: rotate(25deg); }
+}
+
 @media only screen and (max-width: 768px) {
   #description {
     height: auto;
@@ -549,6 +654,11 @@ iframe {
 
   .modal {
     width: 90%;
+  }
+
+  .scroll-left,
+  .scroll-right {
+    font-size: 2em;
   }
 }
 
@@ -612,7 +722,8 @@ iframe {
   }
 
   .modal h1 {
-    text-align: center;
+    width: 90%;
+    text-align: left;
     font-size: 1.4em;
   }
 
@@ -640,14 +751,16 @@ iframe {
   .close {
     position: absolute;
     right: 0;
-    height: 100%;
+    height: auto;
     z-index: 11;
   }
 
   .close-modal {
     position: sticky;
-    color: white;
+    color: black;
     z-index: 11;
+    border-radius: 50%;
+    margin-top: -25%;
   }
 
   form > * {

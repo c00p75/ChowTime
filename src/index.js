@@ -1,5 +1,4 @@
 import './style.css';
-// import { retrieveData } from './modules/getApiData.js';
 import allCategories from './modules/categoryApi.js';
 import postLike from './modules/postLike.js';
 import { getComment } from './modules/getComment.js';
@@ -8,7 +7,6 @@ import { openModal, closeModal, details } from './modules/popup.js';
 import { scrollRight, scrollLeft } from './modules/scrollFunctionality.js';
 
 document.querySelector('DOMContentLoaded', allCategories());
-// document.querySelector('DOMContentLoaded', retrieveData('Miscellaneous'));
 document.querySelector('#meal-container').addEventListener('click', (event) => {
   if (event.target.classList.contains('like-btn')) {
     postLike(event.target.parentElement.parentElement.parentElement.parentElement.id);
@@ -58,12 +56,13 @@ document.querySelector('#meal-container').addEventListener('click', (event) => {
 // Post form details
 document.querySelector('form').addEventListener('submit', async (event) => {
   event.preventDefault();
-  document.querySelector('#addCommentForm #submit').disabled = true;
+  const submitBtn = document.querySelector('#addCommentForm #submit');
+  submitBtn.style.pointerEvents = 'none';
+  submitBtn.style.opacity = 0.5;
   const userId = document.querySelector('#meal-details').className;
   const userName = document.querySelector('#name').value;
   const userComment = document.querySelector('#comment').value;
   await addComment(userId, userName, userComment);
-  document.querySelector('#addCommentForm #submit').disabled = false;
 });
 
 // close popup window
@@ -74,14 +73,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.querySelector('.modal').addEventListener('click', (event) => {
-  if (event.target.nodeName === 'SUMMARY') {
-    document.querySelector('.modal .dropdown').classList.toggle('rotate');
-  }
-  if (event.target.id === 'summary') {
-    document.querySelector('.modal .dropdown').classList.toggle('rotate');
-  }
-
-  if (event.target.classList.contains('dropdown')) {
-    event.target.classList.toggle('rotate');
-  }
+  if (event.target.nodeName === 'SUMMARY') { document.querySelector('.modal .dropdown').classList.toggle('rotate'); }
+  if (event.target.id === 'summary') { document.querySelector('.modal .dropdown').classList.toggle('rotate'); }
+  if (event.target.classList.contains('dropdown')) { event.target.classList.toggle('rotate'); }
 });

@@ -37,6 +37,18 @@ export const retrieveData = async (category) => {
         const imageObjectURL = i.strMealThumb;
         const image = new Image();
         image.src = imageObjectURL;
+        image.loading = 'lazy';
+        const loaderContainer = document.createElement('div');
+        image.onload = () => {
+          image.style.opacity = 1;
+          loaderContainer.style.display = 'none';
+        };
+        image.style.opacity = 0;
+        loaderContainer.className = 'loaderContainer';
+        const loader = document.createElement('span');
+        loader.className = 'loader';
+        loaderContainer.appendChild(loader);
+        itemImg.appendChild(loaderContainer);
         itemImg.appendChild(image);
         item.appendChild(itemImg);
 

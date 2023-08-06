@@ -17,9 +17,13 @@ const addComment = async (id, name, userComment) => {
     },
   )
     .then(() => {
+      const submitBtn = document.querySelector('#addCommentForm #submit');
       document.querySelector('#name').value = '';
       document.querySelector('#comment').value = '';
       getComment(id);
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = 1;
+      submitBtn.style.pointerEvents = 'all';
     });
 };
 
